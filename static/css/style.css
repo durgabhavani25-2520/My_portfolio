@@ -269,8 +269,6 @@ body.loading .page-loader { opacity: 1; visibility: visible; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 25px; }
 .contact-actions .button { min-height: 43px; gap: 10px; font-size: .64rem; }
 .contact-actions .button svg { width: 14px; height: 14px; }
-.linkedin-placeholder[aria-disabled="true"] { color: #8e9589; border-color: #ffffff1b; cursor: not-allowed; }
-.linkedin-placeholder[aria-disabled="true"]:hover { transform: none; border-color: #ffffff1b; }
 .contact-form { display: flex; flex-direction: column; gap: 17px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .contact-form label { display: flex; flex-direction: column; gap: 8px; color: #b8beb2; font-size: .62rem; font-weight: 600; }
@@ -603,7 +601,6 @@ h1, h2, h3 { font-weight: 600; }
 .contact-actions .button-primary:hover { background: #c66b91; }
 .contact-actions .button-outline { border-color: #a96d8b63; color: #68465f; }
 .contact-actions .button-outline:hover { border-color: #ae5078; background: #fff5f9; }
-.linkedin-placeholder[aria-disabled="true"] { color: #9b8998; border-color: #b99cac55; }
 .footer > p { color: #756579; }
 .footer-bottom { border-color: #8e66852b; color: #806d81; }
 .footer-bottom a { color: #6e5873; }

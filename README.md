@@ -19,7 +19,7 @@ Open http://127.0.0.1:5000.
 
 The portfolio uses information listed in the two supplied resumes: education, technical skills, the Heart Disease Detection System academic project, Cognizant Forage virtual experience, certifications, contact details, location, and GitHub profile.
 
-No formal employment, project repository URL, demo URL, or LinkedIn URL was supplied. The supplied profile photo is saved as `static/images/durga-bhavani-profile.png`. The project demo is marked unavailable; the GitHub link goes to the supplied profile rather than an unverified project repository. The contact form has been removed. The contact section provides downloads for both supplied resume versions; the LinkedIn button remains disabled until a real profile URL is added. Personal details such as date of birth and language list are not displayed.
+No formal employment, project repository URL, demo URL, or certificate files/verification links were supplied. The supplied profile photo is saved as `static/images/durga-bhavani-profile.png`. The project demo is marked unavailable; the GitHub link goes to the supplied profile rather than an unverified project repository. The contact form has been removed. The contact section provides downloads for both supplied resume versions and links to the supplied LinkedIn profile. Certifications are listed from the resumes; certificate documents can be added when available. Personal details such as date of birth and language list are not displayed.
 
 ## Deploy to Netlify
 
