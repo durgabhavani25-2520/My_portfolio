@@ -6,12 +6,72 @@
   const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
   const sections = [...document.querySelectorAll('main section[id]')];
   const year = document.getElementById('year');
+  const themeToggle = document.querySelector('.theme-toggle');
+  const themeColor = document.querySelector('meta[name="theme-color"]');
 
   if (year) year.textContent = String(new Date().getFullYear());
 
-  if (!reducedMotion) {
-    document.body.classList.add('loading');
-    window.setTimeout(() => document.body.classList.remove('loading'), 1100);
+  if (themeToggle) {
+    const updateThemeToggle = () => {
+      const isDark = document.documentElement.dataset.theme === 'dark';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+      themeToggle.querySelector('.theme-toggle-icon').textContent = isDark ? '☀' : '☾';
+      themeToggle.querySelector('.theme-toggle-label').textContent = `${isDark ? 'Light' : 'Dark'} mode`;
+      if (themeColor) themeColor.content = isDark ? '#111019' : '#fff7fa';
+    };
+
+    updateThemeToggle();
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nextTheme;
+      updateThemeToggle();
+      try {
+        localStorage.setItem('portfolio-theme', nextTheme);
+      } catch (error) {
+        console.warn('Could not save the selected portfolio theme.', error);
+      }
+    });
+  }
+
+  const pageLoader = document.querySelector('.page-loader');
+  const loaderMessage = document.querySelector('.loader-message');
+  const loaderProgress = document.querySelector('.loader-progress');
+  const loaderFill = document.querySelector('.loader-progress-fill');
+  const loaderPercent = document.querySelector('.loader-percent');
+  const loaderRideway = document.querySelector('.loader-rideway');
+  const loaderScooter = document.querySelector('.loader-scooter');
+
+  if (pageLoader && loaderMessage && loaderProgress && loaderFill && loaderPercent && loaderRideway && loaderScooter) {
+    const loadingDuration = 7000;
+    const startTime = performance.now();
+    let previousPercent = -1;
+    const updateProgress = (now) => {
+      const progress = Math.min((now - startTime) / loadingDuration, 1);
+      const percent = Math.floor(progress * 100);
+      const scooterTravel = Math.max(0, loaderRideway.clientWidth - loaderScooter.getBoundingClientRect().width);
+      const scooterPosition = Math.min(scooterTravel, Math.max(0, loaderRideway.clientWidth * progress - loaderScooter.getBoundingClientRect().width / 2));
+      pageLoader.style.setProperty('--loader-scooter-left', `${scooterPosition}px`);
+      if (percent !== previousPercent) {
+        previousPercent = percent;
+        loaderFill.style.width = `${percent}%`;
+        loaderPercent.textContent = `${percent}%`;
+        loaderProgress.setAttribute('aria-valuenow', String(percent));
+      }
+
+      if (progress < 1) {
+        window.requestAnimationFrame(updateProgress);
+        return;
+      }
+
+      pageLoader.classList.add('is-complete');
+      pageLoader.querySelector('.loader-complete')?.setAttribute('aria-hidden', 'false');
+      window.setTimeout(() => {
+        pageLoader.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('loading');
+      }, 2000);
+    };
+    window.requestAnimationFrame(updateProgress);
   }
 
   const starField = document.querySelector('.ambient-lights');

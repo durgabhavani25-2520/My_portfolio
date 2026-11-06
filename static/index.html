@@ -6,12 +6,22 @@
   <meta name="theme-color" content="#fff7fa">
   <meta name="description" content="Boddu Durga Bhavani — Data Analyst and ML Data Operations portfolio.">
   <title>Boddu Durga Bhavani — Data Analyst &amp; ML Data Operations</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch (error) {
+      console.warn('Could not restore the saved portfolio theme.', error);
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="loading">
   <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M7 5h12v12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
     <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></symbol>
@@ -23,10 +33,38 @@
     <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3h10v18H7zM10 18h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/></symbol>
     <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"/></symbol>
   </svg>
-  <div class="page-loader" aria-hidden="true">
-    <div class="loader-orbit"><span></span><span></span><span></span></div>
-    <p>SEOUL NIGHT EDITION</p>
-    <span class="loader-caption">A LITTLE LIGHT, A LOT OF POSSIBILITY</span>
+  <div class="page-loader" aria-hidden="false">
+    <div class="loader-content">
+      <span class="loader-brand">DB<span>.</span></span>
+      <p class="loader-message" aria-live="polite">WAIT, LOADING...</p>
+      <div class="loader-rideway" aria-hidden="true">
+        <svg class="loader-scooter" viewBox="0 0 76 58" role="presentation">
+          <g class="scooter-wheel">
+            <circle cx="15" cy="47" r="6" fill="#111" stroke="#f4a1bf" stroke-width="2"/>
+            <path d="M15 43v8m-4-4h8m-6.8-2.8 5.6 5.6m0-5.6-5.6 5.6" stroke="#f4a1bf" stroke-width="1"/>
+          </g>
+          <g class="scooter-wheel">
+            <circle cx="62" cy="47" r="6" fill="#111" stroke="#f4a1bf" stroke-width="2"/>
+            <path d="M62 43v8m-4-4h8m-6.8-2.8 5.6 5.6m0-5.6-5.6 5.6" stroke="#f4a1bf" stroke-width="1"/>
+          </g>
+          <path d="M15 45h39l7-17m-8 17-8-10h-9m17 10 5-24h8m-9 0h12" fill="none" stroke="#f4a1bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+          <path d="M27 34h13l6 4-5 3H27z" fill="#a991d1" stroke="#d8c6f4" stroke-linejoin="round" stroke-width="1.5"/>
+          <path d="M34 22q5-4 10 0l3 11-11 2-5-7z" fill="#79bfc2" stroke="#d4f5f1" stroke-linejoin="round" stroke-width="1.5"/>
+          <circle cx="39" cy="14" r="6" fill="#d79d79" stroke="#ffe0cc" stroke-width="1"/>
+          <path d="M33 14q0-8 7-8 6 1 6 7l-4-3-7 1-2 3" fill="#382738"/>
+          <path d="m43 23 9 4 5-3m-16 9 7 6h7m-13-5-2 6h9" fill="none" stroke="#d79d79" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+          <circle cx="57" cy="24" r="2" fill="#d79d79"/>
+        </svg>
+      </div>
+      <div class="loader-progress" role="progressbar" aria-label="Portfolio loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span class="loader-progress-fill"></span>
+      </div>
+      <div class="loader-progress-meta">
+        <span class="loader-caption">PLEASE WAIT</span>
+        <span class="loader-percent">0%</span>
+      </div>
+      <h1 class="loader-complete" aria-hidden="true"><span>LET’S EXPLORE</span><span>DURGA CHOWDARY</span></h1>
+    </div>
   </div>
   <div class="grain" aria-hidden="true"></div>
   <div class="ambient-lights" aria-hidden="true"></div>
@@ -45,6 +83,10 @@
         <a href="#education">Education</a>
         <a href="#certifications">Certifications</a>
         <a class="nav-contact" href="#contact">Contact <span>↗</span></a>
+        <button class="theme-toggle" type="button" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-label">Dark mode</span>
+        </button>
       </div>
     </nav>
   </header>
